@@ -1,0 +1,13 @@
+.header{
+  background-color: #212529;
+  .header__shoppingCartContainer{
+      display: flex;
+      justify-content: flex-end;
+      padding: 10px 15px;
+      svg{
+          color: #ffffff;
+          cursor: pointer;
+          font-size: 1.2rem;
+      }
+  }
+}
