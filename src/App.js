@@ -10,7 +10,7 @@ const App = () => {
   return (
     <>
       <Header />
-        <ItemListContainer nombre="Alejandro Mejias" />
+        <ItemListContainer />
     </>
   )
 }
