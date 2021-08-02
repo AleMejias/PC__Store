@@ -1,0 +1,69 @@
+.header{
+  background-color: #212529;
+  .header__shoppingCartContainer{
+      display: flex;
+      justify-content: flex-end;
+      padding: 10px 15px;
+      svg{
+          color: #ffffff;
+          cursor: pointer;
+          font-size: 1.2rem;
+      }
+  }
+}
+
+.articulo{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 10px;
+  cursor: pointer;
+  .articulo__divImg{
+    width: 100%;
+    padding: 5px;
+    img{
+      width: 100%;
+    }
+  }
+  .articulo__divNombre{
+    h4{
+      text-align: center;
+      font-size: 1.1rem;
+    }
+  }
+  .articulo__divPrecio{
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    span{
+      text-align: center;
+    }
+  }
+  .articulo__divCuotas{
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+  }
+  .articulo__divBtnDetalle{
+    display: flex;
+    justify-content: center;
+    padding: 10px 5px;
+    button{
+      padding: 9px;
+      outline: none;
+      border: none;
+      border-radius: 5px;
+      background-color: #212529;
+      color: #ffffff;
+    }
+    button:hover{
+      opacity: .9;
+    }
+  }
+}
+.articulo:hover{
+  box-shadow: 0px 0px 6px 0px rgba(33,37,41,1);
+  -webkit-box-shadow: 0px 0px 6px 0px rgba(33,37,41,1);
+  -moz-box-shadow: 0px 0px 6px 0px rgba(33,37,41,1);
+}

@@ -1,14 +1,13 @@
 import React from 'react';
 
-import ItemCount from './ItemCount';
-
+// Components
+/* import ItemCount from './ItemCount'; */
+import ItemList from './ItemList';
 
 const ItemListContainer = () => {
 
     return (
-        <section className ="container">
-            <ItemCount stock={5} initialValue = {1} />
-        </section>
+        <ItemList />
     );
 }
 export default ItemListContainer; 

@@ -1,7 +1,7 @@
 import React from 'react';
 
 /* STYLES */
-import './assets/App.scss';
+import './assets/scss/App.scss';
 /* COMPONENTS */
 import Header from './components/Header';
 import ItemListContainer from './components/ItemListContainer';
