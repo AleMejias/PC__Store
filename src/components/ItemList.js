@@ -1,31 +1,18 @@
-import React, { useState,useEffect } from "react";
-import Item from './Item';
-import { dataArr } from "../data";
+import React from "react";
+import Item from "./Item";
+import { imgArr } from "../img";
 
-
-
-const ItemList = () => {
-  const [item, setItem] = useState([]);
-  useEffect(()=> {
-    const data = new Promise((resolve, reject) => {
-        setTimeout(() => {
-          resolve(dataArr);
-        }, 2000);
-      });
-      data.then((item) => {
-          setItem(item)
-      })
-  },[])
+const ItemList = ({item}) => {
 
   return (
     <section className="container mt-5">
       <div className="row">
         {
-            item.map(({id,nombre,precio,img}) => ( 
-                <div className = "col-md-4" key={id}>
-                    <Item nombre={nombre} precio = {precio} img={img}/>
-                </div>
-            ))
+          item.map(({ id, nombre, precio}) => (
+            <div className="col-md-4" key={id}>
+              <Item id = {id} nombre={nombre} precio={precio} img={imgArr[id]} />
+            </div>
+          ))
         }
       </div>
     </section>

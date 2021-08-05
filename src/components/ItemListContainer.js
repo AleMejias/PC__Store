@@ -1,13 +1,23 @@
-import React from 'react';
+import React,{ useState,useEffect } from 'react';
 
 // Components
-/* import ItemCount from './ItemCount'; */
 import ItemList from './ItemList';
+/* import ItemCount from './ItemCount'; */
 
 const ItemListContainer = () => {
+    const [item, setItem] = useState([]);
+    useEffect(() => {
+      fetch("./data/data.json")
+        .then((response) => response.json())
+        .then((data) =>
+          setTimeout(() => {
+            setItem(data);
+          }, 2000)
+        );
+    }, []);
 
     return (
-        <ItemList />
+        <ItemList item = {item}/>
     );
 }
 export default ItemListContainer; 

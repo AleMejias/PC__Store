@@ -1,10 +1,14 @@
-import React from 'react';
+import React,{useState} from 'react';
 
-const Item  = ({nombre,precio,img}) => {
+//Components
+/* import ItemDetail from './ItemDetail'; */
+import ItemDetailContainer from './ItemDetailContainer';
 
+const Item  = ({id ,nombre,precio,img}) => {
+    const [modalShow, setModalShow] = useState(false);
     return (
         <>
-            <article className = "articulo">
+            <article className = "articulo" key={id}>
                 <div className = "articulo__divImg">
                    <img src={img} alt = {nombre}/>
                 </div>
@@ -18,9 +22,10 @@ const Item  = ({nombre,precio,img}) => {
                     <span>12 Cuotas de $ {(precio / 12).toFixed(2)}</span>
                 </div>
                 <div className="articulo__divBtnDetalle">
-                    <button>Ver Producto</button>
+                    <button onClick={() => setModalShow(true)}>Ver Producto</button>
                 </div>
             </article>
+            <ItemDetailContainer show={modalShow} onHide={() => setModalShow(false)} id={id} />
         </>
     );
 }
