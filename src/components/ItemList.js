@@ -1,21 +1,25 @@
 import React from "react";
+/* Components */
 import Item from "./Item";
+/* Router */
 import { imgArr } from "../img";
+import { Link } from "react-router-dom";
 
-const ItemList = ({item}) => {
-
+const ItemList = ({item,categoriaParam}) => {
   return (
-    <section className="container mt-5">
-      <div className="row">
-        {
-          item.map(({ id, nombre, precio}) => (
+    <div className="row">
+      {
+        item.map(({ id, nombre, precio,categoria}) => (
+          (categoria === categoriaParam) ? (
             <div className="col-md-4" key={id}>
-              <Item id = {id} nombre={nombre} precio={precio} img={imgArr[id]} />
+              <Link  to={`/detalle/${id}`} style={{textDecoration:"none"}}>
+                <Item id = {id} nombre={nombre} precio={precio} img={imgArr[id]} />
+              </Link>
             </div>
-          ))
-        }
-      </div>
-    </section>
+          ) : ""
+        ))
+      }
+    </div>
   );
 };
 

@@ -3,6 +3,8 @@
         "id": 0,
         "nombre": "Notebook Lenovo Thinkpad L15 15.6. Intel I5 1135G7 8GB Ram 256GB SSD FREEDOS",
         "precio": 107550.000,
+        "categoria":"notebook",
+        "stock": 3,
         "descripcion":[
             {"Color": "Negro"},
             {"Tipo": "Notebook"},
@@ -38,6 +40,8 @@
         "id":1,
         "nombre": "Disco Solido SSD 240GB Kingston A400 SATA III",
         "precio": 3750.000,
+        "categoria":"discos",
+        "stock": 5,
         "descripcion":[
             {"Capacidad":"240 GB"},
             {"Dimensiones":"100.5mm X 69.85mm X 7.0 Mm"},
@@ -56,6 +60,8 @@
         "id":2,
         "nombre":"Notebook Dell Latitude 3410 14. Intel I5 10210U 4GB Ram 1TB HDD UBUNTU",
         "precio": 94500.000,
+        "categoria":"notebook",
+        "stock": 2,
         "descripcion":[
             {"Color": "Negro"},
             {"Tipo": "Notebook"},

@@ -1,43 +1,83 @@
-import React from 'react';
-
-import {Modal,Container,Row,Col} from 'react-bootstrap';
+import React  from 'react';
+/* DEPENDENCIAS */
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faCheckCircle , faTruck , faShieldAlt } from '@fortawesome/free-solid-svg-icons';
 import {imgArr} from '../img';
 
-const ItemDetail = ({onHide,item}) => {
-  const {descripcion} = item; //Hago destructuring del arreglo que contiene los detalles del producto para luego pintarlos con un bucle
+const ItemDetail = ({item}) => {
+     const {descripcion} = item; //Hago destructuring del arreglo que contiene los detalles del producto para luego pintarlos con un bucle
+     const { id , nombre , precio } = item;
+     const priceWithIva = precio * 1.21;
+     let stockColor = (item.stock < 4) ? "#FF8300" : "#00E303"; // color a definir segun le cantidad de stock recibida
+     let stockText = (item.stock < 4) ? "STOCK BAJO" : "STOCK ALTO"; //Mensaje a definir segun el stock recbido
     return (
       <>
-          <Modal.Header closeButton onClick={onHide}>
-            <Modal.Title id="contained-modal-title-vcenter">
-              {item.nombre}
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body className="show-grid">
-            <Container>
-              <Row>
-                <Col xs={12} md={6}>
-                  <img src={imgArr[item.id]} alt = {item.nombre} className="modal-img"/>
-                </Col>
-                <Col xs={6} md={6}>
-                  <ul className="lista-detalle">
-                  <div className="px-1 py-1 text-end">
-                      <h5 className="display-6 text-dark">${item.precio}</h5>
-                    </div>
-                    <div className="px-1 py-1 text-center">
-                      <h5>Detalles</h5>
-                    </div>
-                    {
-                      descripcion.map((propiedad,index) => (
-                        <li key={index}>
-                          <strong>{Object.getOwnPropertyNames(propiedad)}:</strong><span className="mx-1">{Object.values(propiedad)}</span>
-                        </li>
-                      ))
-                    }
-                  </ul>
-                </Col>
-              </Row>
-            </Container>
-          </Modal.Body>
+        <div className = "row">
+          <div className = "col-md-8">
+            <div className = "detail__containerTitle">
+              <h2>{ nombre }</h2>
+            </div>
+            <div className = "detail__containerImg mt-2">
+              <img src= {imgArr[id]} alt = {nombre}/>
+            </div>
+          </div>
+          <div className = "col-md-4 py-1">
+            <div className= "detail__containerPrice">
+              <span>${ precio }</span>
+            </div>
+            <div className= "detail__containerPriceWithIva">
+              <span>Precio de lista: </span><small> ${ priceWithIva }</small>
+            </div>
+            <div className="detail__containerFee mt-2">
+              <span>12 cuotas de sin interés de <small>${ (priceWithIva / 12).toFixed(2) }</small> a precio de lista.</span>
+            </div>
+            <div className="detail__containerStock mt-2">
+              <div className = "detail__containerStock--iconContainer">
+                <FontAwesomeIcon icon= {faCheckCircle} style={{color:`${stockColor}`}}/>
+              </div>
+              <div className="detail__containerStock--textStockContainer">
+                <span style={{color:`${stockColor}`}}>
+                  {stockText}
+                </span>
+              </div>
+            </div>
+            <div className="detail__containerShipping mt-2">
+              <div className="detail__containerShipping--iconContainer">
+                <FontAwesomeIcon icon={faTruck} />
+              </div>
+              <div className="detail__containerShipping--textShippingContainer">
+                <span>Envíos a todo el país.</span>
+              </div>
+            </div>
+            <div className="detail__containerGuarantee mt-2">
+              <div className="detail__containerGuarantee--iconContainer">
+                <FontAwesomeIcon icon={faShieldAlt} />
+              </div>
+              <div className="detail__containerGuarantee--textGuaranteeContainer">
+                <span>Garantía por 360 días.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="row px-3 py-3">
+          <div className="col-md-12 properties">
+            <div className="properties__titleContainer">
+              <h4>ESPECIFICACIONES DEL PRODUCTO</h4>
+            </div>
+            <div className="properties__listContainer">
+              <ul>
+                {
+                  // COMO ITEM.DESCRIPCION ES UNDEFINED Y LUEGO DE DOS SEGUNDOS TOMA VALORES, ENTONCES COLOQUE ESTA CONDICIONAL PARA EVITAR
+                  // ERRORES EN EL MAP , ERA MEJOR UTILIZAR UN useEffect ???
+                  (descripcion !== undefined) ? 
+                  descripcion.map((property,index) => (
+                    <li key={index}>{Object.getOwnPropertyNames(property)}:<span>{Object.values(property)}</span></li>
+                  )) : ""
+                }
+              </ul>
+            </div>
+          </div>
+        </div>
       </>
     );
 }

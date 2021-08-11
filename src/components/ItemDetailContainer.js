@@ -1,28 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { Modal} from "react-bootstrap";
+import { useParams } from "react-router-dom";
 import ItemDetail from './ItemDetail';
 
-const ItemDetailContainer = ({ show, onHide, id }) => {
+const ItemDetailContainer = () => {
   const [item, setItem] = useState([]);
+  const {id} = useParams();
   useEffect(() => {
-    getItem(id);
-  }, [id]);
-  const getItem = (idParam) => {
-    const promise = fetch("./data/data.json");
-    setTimeout(() => {
-      promise
-        .then((response) => response.json())
-        .then((data) =>
-          data.filter((producto) => (producto.id === idParam ? setItem(producto) : ""))
-        );
-    }, 2000);
-
-    return promise;
-  };
+    const getItemById = () => {
+      const promise = fetch("../data/data.json")
+      setTimeout(() => {
+        promise.then((response) => response.json())
+                .then((data) => setItem(data[id]));
+      },2000);
+    }
+    getItemById();
+  },[id]);
   return (
-    <Modal show={show} aria-labelledby="contained-modal-title-vcenter" size="xl">
-      <ItemDetail item = {item} onHide={onHide}/> 
-    </Modal>
+    <>
+      <section className = "container detail mt-5">
+        <ItemDetail item = {item}/>
+      </section>
+    </>
   );
 };
 

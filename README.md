@@ -1,70 +1,16 @@
-# Getting Started with Create React App
+PC-STORE: Es una tienda ficticia de productos para pc, por ahora se tienen 3 productos pero se incorporaran mas y el resto de categorias!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+Se usaron dependencias externas como:
 
-In the project directory, you can run:
+1)React-bootstrap
+2)Font-awesome
+3)Sass
 
-### `npm start`
+Los productos provienen de un archivo.json ubicado en la carpeta "data" que se encuentra dentro de "public".
+Dichos productos son leidos por medio de una petición Fetch que es usada tanto en el componente ItemListContainer así como
+también en el componente ItemDetailContainer. Con la diferencia que en el componente "ItemListContainer" utilizamos el hook useEffect para consumir esos datos por medio de la funcion getItemList y en el "ItemDetailContainer" utilizamos la misma mecanica pero hacemos uso de la funcion getItemById el cual trabaja con un "id" que es recibo como parametro por las url, esta acción permitirá mostrar en pantalla segun: 1) la categoria 2) El id del producto. Dicho id es usado para navegar al componente "ItemDetail" el cual nos mostrara la informacion de dicho producto.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Con las siguientes clases pienso poder centralizar el estado para consumirlo en toda mi aplicacion mediante useContext y evaluar si existe otro metodo para consumir datos (me refiero a firebase), mejorar un poco los estilos e ir puliendo el codigo para su mayor legibilidad.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+El componente "HOME" se encuentra vacio por los momentos ya que pienso construirlo cuando tenga un estado centralizado ya que mi proposito será mostrar algunos productos en "promo" o destacados para que al clickear puedan ser mostrados por el componente "ItemDetail".
