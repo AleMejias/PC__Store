@@ -25,6 +25,12 @@
       font-size: 1.2rem;
     }
   }
+  .navBar{
+    display: flex;
+    justify-content: space-around;
+    padding: 2px;
+    width: 100%;
+  }
 }
 
 .articulo {
@@ -212,6 +218,40 @@
         color: $text-color;
         opacity: 0.9;
       }
+    }
+  }
+  .detail__containerPurchase{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 5px;
+    .detail__containerPurchase--countContainer{
+      display: flex;
+      justify-content: center; 
+      padding: 5px;
+      width: 100%;
+      button{
+        border: 1px solid rgba(126, 126, 131, 0.15);
+        border-radius: 2px;
+        padding: 5px;
+        width: 2.5rem;
+      }
+      span{
+        border: 1px solid rgba(126,126,131,.15);
+        padding: 7px 0;
+        text-align: center;
+        width: 5rem;
+      }
+    }
+    .detail__containerPurchase--btnPurchase{
+      background-color: #0084e0;
+      border: 1px solid transparent;
+      border-bottom: 2px solid #016ab3;
+      border-radius: 5px;
+      color: #fff;
+      outline: none;
+      padding: 8px;
+      width: 80%;
     }
   }
 }

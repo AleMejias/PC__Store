@@ -10,6 +10,7 @@ import ItemDetailContainer from './components/ItemDetailContainer';
 
 /* ROUTER */
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import CartItem from './components/CartItems';
 
 const App = () => {
   return (
@@ -25,6 +26,9 @@ const App = () => {
             </Route>
             <Route  exact path="/detalle/:id">
               <ItemDetailContainer />
+            </Route>
+            <Route path = "/cart/:purchase">
+              <CartItem />
             </Route>
           </Switch>
       </BrowserRouter>

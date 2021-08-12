@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 
 const Item  = ({id ,nombre,precio,img}) => {
@@ -20,7 +19,7 @@ const Item  = ({id ,nombre,precio,img}) => {
                     <span>12 Cuotas de $ {(precio / 12).toFixed(2)}</span>
                 </div>
                 <div className="articulo__divBtnDetalle">
-                    <Link to = {`/detalle/${id}`}><button>Ver Producto</button></Link>
+                    <button>Ver Producto</button>
                 </div>
             </article>
         </>

@@ -23,19 +23,23 @@ const Header = () => {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link>
+            <Nav className="me-auto navBar">
+{/*               <Nav.Link>
                 <NavLink to="/producto/notebook">Notebooks</NavLink>
-              </Nav.Link>
-              <Nav.Link>
+              </Nav.Link> */}
+              <NavLink to="/producto/notebook">Notebooks</NavLink>
+{/*               <Nav.Link>
                 <NavLink to="#!">Auriculares</NavLink>
-              </Nav.Link>
-              <Nav.Link>
+              </Nav.Link> */}
+              <NavLink to="#!">Auriculares</NavLink>
+{/*               <Nav.Link>
                 <NavLink to="#!">Sillas</NavLink>
-              </Nav.Link>
-              <Nav.Link>
+              </Nav.Link> */}
+              <NavLink to="#!">Sillas</NavLink>
+{/*               <Nav.Link>
                 <NavLink to="/producto/discos">Discos</NavLink>
-              </Nav.Link>
+              </Nav.Link> */}
+              <NavLink to="/producto/discos">Discos</NavLink>
             </Nav>
           </Navbar.Collapse>
         </Container>

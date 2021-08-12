@@ -1,11 +1,8 @@
-import React,{useState} from 'react';
+import React from 'react';
 
 
-const ItemCount = ( {stock,initialValue} ) => {
+const ItemCount = ( {stock,quantify,setQuantify,setPurchase} ) => {
 
-    /* Tendramos 2 estados:  Uno para la cantidad que se desea agregar, y otro para guardar la cantidad que se agrega */
-    const [quantify,setQuantify] = useState( initialValue );
-    const [ purchase, setPurchase ] = useState( 0 );
 
     // Aumento
     const addQuantify = () => (quantify !== stock) ? setQuantify( quantify + 1 ) : "";
@@ -16,23 +13,19 @@ const ItemCount = ( {stock,initialValue} ) => {
     // Registo la compra
     const onAdd = () => {
         setPurchase( quantify ); // Aqui guardo la cantidad de items "comprada"
-        setQuantify( 1 ); // Una vez guardada la cantidad de items, los reinicio a 0. 
+        setQuantify( 1 ); // Una vez guardada la cantidad de items, los reinicio a 1. 
     }
 
     return (
         <>
-            <div className = "d-flex justify-content-center px-2 py-2">
-                <p>{quantify}</p>
+            <div className="detail__containerPurchase--countContainer mb-2">
+                <button onClick= {subtractQuantify}>-</button>
+                <span>{ quantify }</span>
+                <button onClick= { addQuantify }>+</button>
             </div>
-            <div className=" d-flex justify-content-center">
-                <button className="btn btn-danger" onClick={subtractQuantify} >-</button>
-                <button className="btn btn-success mx-2" onClick={()=> onAdd(quantify)}>Agregar</button>
-                <button className="btn btn-primary" onClick = {addQuantify}>+</button>
-            </div>
-            <div className = "d-flex justify-content-center mt-4">
-                <p> Cantidad agregada: <strong>{ purchase }</strong></p>
-            </div>
+            <button className="detail__containerPurchase--btnPurchase" onClick= { onAdd }>COMPRAR</button>
         </>
+
     );
 };
 
