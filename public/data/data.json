@@ -58,6 +58,25 @@
     },
     {
         "id":2,
+        "nombre": "Silla Gamer Coolermaster R1 Gaming White",
+        "precio": 46900.000,
+        "categoria":"sillas",
+        "stock": 2,
+        "descripcion": [
+            {"Capacidad De Peso":"150 Kg max"},
+            {"Peso Del Producto":"21.5 Kg"},
+            {"Ancho":"75cm"},
+            {"Alto":"125 - 133cm"},
+            {"Ancho Del Respaldo":"57cm"},
+            {"Largo Del Respaldo":"82cm"},
+            {"Ajuste De Altura":"Si"},
+            {"Ajuste De Brazos":"Si"},
+            {"Diseño":"Caliber R1"},
+            {"Colores":"Negro / Blanco"}
+        ]
+    },
+    {
+        "id":3,
         "nombre":"Notebook Dell Latitude 3410 14. Intel I5 10210U 4GB Ram 1TB HDD UBUNTU",
         "precio": 94500.000,
         "categoria":"notebook",
@@ -95,5 +114,40 @@
             {"Slot Adicional De RAM Disponible":"Si"}
         ]
 
+    },
+    {
+        "id":4,
+        "nombre":"Auricular c/mic Redragon ZEUS 2 H510",
+        "precio": 6990.000,
+        "categoria":"auriculares",
+        "stock": 4,
+        "descripcion":[
+            {"Altura Del Producto":"220 Mm"},
+            {"Ancho Del Producto":"275 Mm"},
+            {"Profundidad Del Producto":"100 Mm"},
+            {"Peso Total":"305 Gramos"},
+            {"Accesorios":"Cable Adaptador 3.5mm X2"},
+            {"Caracteristicas Especiales":"Control De Volumen y Microfono Rebatible"},
+            {"Controles":"Volumen, Silenciar y Microfono"},
+            {"Tipo De Conexion":"Cableada"},
+            {"Largo Del Cable":"200 Cm"},
+            {"Tipo De Conector":"USB 2.0 Y 3.5mm"},
+            {"Vincha Ajustable":"Si"},
+            {"Tipo De Copa":"On-Ear"},
+            {"Material De La Copa":"Cuero Sintetico"},
+            {"Tipo De Iman":"Neodimio"},
+            {"Tipo De Dispositivos Compatibles":"Pc, Laptop, Consolas"},
+            {"Plataformas De Software Compatibles":"Mac OS, Chrome OS, Windows"},
+            {"Tipo de audio":"Surround Y Stereo"},
+            {"Canales De Audio":"7.1 Y 2.0"},
+            {"Tamaño Del Driver":"40 Mm"},
+            {"Impedencia":"64 Ohm"},
+            {"Sensibilidad":"113 DB"},
+            {"Microfono":"Si"},
+            {"Frecuencia De Respuesta":"20 Hz - 20000 Hz"},
+            {"Tipo De Microfono":"Condensador"},
+            {"Tipo De Captacion":"Omnidireccional"},
+            {"Cancelacion De Eco":"No"}
+        ]
     }
 ]

@@ -1,12 +1,15 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React/* , { useContext } */ from 'react';
+/* import CartContext from '../context/CartContext'; */
+
 
 
 const CartItem = () => {
-    const { purchase } = useParams();
+    /* const {purchases} = useContext( CartContext ); */
+
     return (
         <>
-            <h2>Gracias por tu compra, registramos que seleccionaste { purchase }</h2>
+{/*             <h2>Compraste : { item.nombre }</h2>
+            <p>Cantidad comprada: { quantify }</p> */}
         </>
     );
 }

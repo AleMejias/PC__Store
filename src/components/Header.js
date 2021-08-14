@@ -24,21 +24,9 @@ const Header = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto navBar">
-{/*               <Nav.Link>
-                <NavLink to="/producto/notebook">Notebooks</NavLink>
-              </Nav.Link> */}
               <NavLink to="/producto/notebook">Notebooks</NavLink>
-{/*               <Nav.Link>
-                <NavLink to="#!">Auriculares</NavLink>
-              </Nav.Link> */}
-              <NavLink to="#!">Auriculares</NavLink>
-{/*               <Nav.Link>
-                <NavLink to="#!">Sillas</NavLink>
-              </Nav.Link> */}
-              <NavLink to="#!">Sillas</NavLink>
-{/*               <Nav.Link>
-                <NavLink to="/producto/discos">Discos</NavLink>
-              </Nav.Link> */}
+              <NavLink to="/producto/auriculares">Auriculares</NavLink>
+              <NavLink to="/producto/sillas">Sillas</NavLink>
               <NavLink to="/producto/discos">Discos</NavLink>
             </Nav>
           </Navbar.Collapse>

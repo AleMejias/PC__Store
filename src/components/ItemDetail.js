@@ -1,4 +1,4 @@
-import React, { useState }  from 'react';
+import React, { useState , useContext }  from 'react';
 import { Link } from 'react-router-dom';
 /* DEPENDENCIAS */
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
@@ -6,6 +6,8 @@ import {faCheckCircle , faTruck , faShieldAlt } from '@fortawesome/free-solid-sv
 import {imgArr} from '../img';
 /* Components */
 import ItemCount from './ItemCount';
+import CartContext from '../context/CartContext';
+/* CONTEXT */
 
 const ItemDetail = ({item}) => {
      const {descripcion} = item; //Hago destructuring del arreglo que contiene los detalles del producto para luego pintarlos con un bucle
@@ -13,9 +15,11 @@ const ItemDetail = ({item}) => {
      const priceWithIva = precio * 1.21;
      let stockColor = (item.stock < 4) ? "#FF8300" : "#00E303"; // color a definir segun le cantidad de stock recibida
      let stockText = (item.stock < 4) ? "STOCK BAJO" : "STOCK ALTO"; //Mensaje a definir segun el stock recbido
+
     /* Tendremos 2 estados:  Uno para la cantidad que se desea agregar, y otro para guardar la cantidad que se agrega */
     const [quantify,setQuantify] = useState( 1 );
     const [ purchase, setPurchase ] = useState( null );
+    const {addItemToCart} = useContext( CartContext );
     return (
       <>
         <div className = "row">
@@ -64,10 +68,13 @@ const ItemDetail = ({item}) => {
               </div>
             </div>
             <div className="detail__containerPurchase mt-4">
-              
+              {/* EL ESTADO DE LA COMPRA ( PURCHASE ) COMIENZA EN NULL, Y ESO HACE QUE MUESTRE EL BOTON DE COMPRA PORQUE NO TIENE VALOR, UNA VEZ TENGA VALOR PUES MOSTRARA EL BOTON "TERMINAR COMPRA" Y MANDARA POR PARAMETRO DE LA URL LA CANTIDAD QUE SE COMPRÓ */}
               {
-                (purchase === null) ? <ItemCount stock={item.stock} quantify={quantify} setQuantify={setQuantify} setPurchase = {setPurchase}/>
-                                 :  <Link to={`/cart/${purchase}`}><button className="detail__containerPurchase--btnPurchase">TERMINAR COMPRA</button></Link>
+                (purchase === null) 
+                ? <ItemCount stock={item.stock} quantify={quantify} setQuantify={setQuantify} setPurchase = {setPurchase}/>
+                :  <Link to={`/cart`}>
+                    <button className="detail__containerPurchase--btnPurchase" onClick = { () => addItemToCart( {item:item,quantify:purchase} ) }>TERMINAR COMPRA</button>
+                   </Link>
               }
             </div>
           </div>
