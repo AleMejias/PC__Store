@@ -73,7 +73,7 @@ const ItemDetail = ({item}) => {
                 (purchase === null) 
                 ? <ItemCount stock={item.stock} quantify={quantify} setQuantify={setQuantify} setPurchase = {setPurchase}/>
                 :  <Link to={`/cart`}>
-                    <button className="detail__containerPurchase--btnPurchase" onClick = { () => addItemToCart( {item:item,quantify:purchase} ) }>TERMINAR COMPRA</button>
+                    <button className="detail__containerPurchase--btnPurchase" onClick = { () => addItemToCart( item,purchase) }>TERMINAR COMPRA</button>
                    </Link>
               }
             </div>

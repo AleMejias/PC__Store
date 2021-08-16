@@ -19,10 +19,21 @@
     display: flex;
     justify-content: flex-end;
     padding: 10px 15px;
+    position: relative;
     svg {
       color: #ffffff;
       cursor: pointer;
       font-size: 1.2rem;
+    }
+    span{
+      background-color: #fff;
+      border-radius: 20px;
+      bottom: -9px;
+      color: #000000;
+      font-weight: 600;
+      padding: 0px 7px;
+      position: absolute;
+      right: 35px;
     }
   }
   .navBar{
@@ -231,13 +242,13 @@
       padding: 5px;
       width: 100%;
       button{
-        border: 1px solid rgba(126, 126, 131, 0.15);
+        border: $border-description;
         border-radius: 2px;
         padding: 5px;
         width: 2.5rem;
       }
       span{
-        border: 1px solid rgba(126,126,131,.15);
+        border: $border-description;
         padding: 7px 0;
         text-align: center;
         width: 5rem;
@@ -283,4 +294,66 @@
       }
     }
   }
+}
+
+/* PAGINA DEL CARRITO */
+.cartItem{
+  display: flex;
+  align-items: center;
+  border: $border-description;
+  border-radius: 2px;
+  div{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    width: 25%;
+  }
+  img{
+    width: 100%;
+  }
+  h6{
+    font-size: .8rem;
+    font-weight: 600;
+    text-align: center;
+  }
+  svg{
+    color: red;
+    font-size: 1.1rem;
+    cursor: pointer;
+  }
+}
+.cartItemResume{
+  border: $border-description;
+  height: 50vh;
+  .cartItemResume__titleContainer{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    border-bottom: $border-description;
+    h5{
+      color: $primary-bLack;
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+  }
+  .cartItemResume__amountContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    strong{
+      font-size: 1.1rem;
+    }
+    span{
+      color: $text-color;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+  }
+}
+.show{
+  display: unset;
+}
+.hide{
+  display: none;
 }

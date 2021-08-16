@@ -15,7 +15,9 @@ import logo from '../assets/img/logoCopia.png';
 const Header = () => {
   return (
     <section className="container-fluid header">
-      <CartWidget />
+      <Link to="/cart">
+        <CartWidget />
+      </Link>
       <Navbar expand="lg" variant="dark">
         <Container>
           <Navbar.Brand>
