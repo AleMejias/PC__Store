@@ -1,16 +1,18 @@
 import React , { useContext } from 'react';
 import CartContext from '../context/CartContext';
+
 /* DEPENDENCIAS */
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import {faTrashAlt , faTimes , faUndo} from '@fortawesome/free-solid-svg-icons';
+
+/* ROUTER */
+import { Link } from 'react-router-dom';
+
 /* Array de imagenes */
 import { imgArr } from '../img';
 
-
-
 const CartItem = () => {
-
-    const { purchases, deleteItemById } = useContext( CartContext );
+    const { purchases, deleteItemById , clearCart} = useContext( CartContext );
     const totalAmount = () => {
         let amount = 0;
         purchases.map(( {item:{precio},quantify} ) => (
@@ -21,8 +23,12 @@ const CartItem = () => {
     const cartEmpty = () => {
         return (
             <div className="row">
-                <div className="col-md-12">
+                <div className="col-md-12 cartEmpty">
                     <h4>El carrito se encuentra vacio</h4>
+                    <Link to="/">
+                        Volver al listado de productos
+                        <FontAwesomeIcon className= "mx-1" icon = { faUndo } />
+                    </Link>
                 </div>
             </div>
         )
@@ -46,7 +52,7 @@ const CartItem = () => {
                                     <span>${ (precio * quantify) }</span>
                                 </div>
                                 <div>
-                                    <FontAwesomeIcon icon= { faTrashAlt } onClick = {() => deleteItemById(id)}/>
+                                    <FontAwesomeIcon icon= { faTimes } title= "Eliminar producto" onClick = {() => deleteItemById(id)}/>
                                 </div>
                             </article>
                         ))
@@ -56,8 +62,16 @@ const CartItem = () => {
                     <div className="cartItemResume__titleContainer">
                         <h5>Resumen del Pedido</h5>
                     </div>
-                    <div className="cartItemResume__amountContainer mt-3">
+                    <div className="cartItemResume__amountContainer">
                         <strong>Monto total:</strong><span>${ totalAmount() }</span>
+                    </div>
+                    <div className = "cartItemResume__buttonsContainer"> 
+                        <div className="cartItemResume__buttonsContainer--clearCart">
+                            <FontAwesomeIcon icon = { faTrashAlt } title = "Vaciar carrito" onClick = { clearCart } />
+                        </div>
+                        <div className="cartItemResume__buttonsContainer--confirmPurchase">
+                            <button>CONFIRMAR</button>
+                        </div>
                     </div>
                 </div>
             </div>

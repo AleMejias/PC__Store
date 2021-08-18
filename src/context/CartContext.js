@@ -7,6 +7,10 @@ class CartItem {
     this.item = item;
     this.quantify = quantify;
   }
+  // Metodo para setear el quantify de los items que YA se encuentren agregados al carrito
+  setQuantifyInCart = ( newQuantify ) => {
+    this.quantify = newQuantify;
+  }
 }
 const CartProvider = ({ children }) => {
   const [purchases, setPurchases] = useState([]); 
@@ -14,11 +18,16 @@ const CartProvider = ({ children }) => {
 
   /* FUNCION PARA AGREGAR PRODUCTOS Y OBVIAR DUPLICADOS EN EL CARRITO */
   const addItemToCart = (item,quantify) => {
-    const isInCart = itemsAddedToCart.includes(item.id); // Verfico si en el state "itemsAddedTocart" existe el id del item recibido
+    const isInCart = itemsAddedToCart.includes(item.id); // Verifico si en el state "itemsAddedTocart" existe el id del item recibido
+    const indexInACart = itemsAddedToCart.indexOf( item.id ); // Busco en "itemsAddedToCart" el id que viene por parametro para conocer su index ya que son equitativos  
 
-    if (!isInCart) {
+    //Si ya esta en el carro, entonces "actualiza" el item en la posicion recibida por "indexInACart"
+    if (isInCart) {
+      purchases[indexInACart].setQuantifyInCart( quantify );
+    }else{
+      // Si no esta en el carro pues agregame el nuevo producto haciendo una nueva instancia
       setPurchases([...purchases ,new CartItem( item,quantify)]);
-      setitemsAddedToCart( [...itemsAddedToCart, item.id] )
+      setitemsAddedToCart( [...itemsAddedToCart, item.id] );
     }
   };
   /* FUNCION PARA ELIMINAR PRODUCTOS DEL CARRITO */
@@ -28,7 +37,12 @@ const CartProvider = ({ children }) => {
     setPurchases( items );
     setitemsAddedToCart(itemsArr);
   }
-  const data = { purchases, addItemToCart , deleteItemById};
+  /* FUNCION PARA LIMPIAR EL CARRITO DE COMPRA */
+  const clearCart = () => {
+    setPurchases([]); //Reinicio el estado pasandole un Array vacio
+    setitemsAddedToCart([]); // Reinicio mi array de id pasandole uno vacio
+  }
+  const data = { purchases, addItemToCart , deleteItemById , clearCart};
   return (
     <CartContext.Provider value={data}>
       {children}

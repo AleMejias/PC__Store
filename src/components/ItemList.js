@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 const ItemList = ({ item, categoriaParam }) => {
   const printItem = (id, nombre, precio) => {
     return (
-      <div className="col-md-4" key={id}>
+      <div className="col-md-4 mb-4" key={id}>
         <Link to={`/detalle/${id}`} style={{ textDecoration: "none" }}>
           <Item id={id} nombre={nombre} precio={precio} img={imgArr[id]} />
         </Link>
