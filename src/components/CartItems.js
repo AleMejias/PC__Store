@@ -9,14 +9,14 @@ import {faTrashAlt , faTimes , faUndo} from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 /* Array de imagenes */
-import { imgArr } from '../img';
+/* import { imgArr } from '../img'; */
 
 const CartItem = () => {
     const { purchases, deleteItemById , clearCart} = useContext( CartContext );
     const totalAmount = () => {
         let amount = 0;
-        purchases.map(( {item:{precio},quantify} ) => (
-            amount += precio * quantify
+        purchases.map(( {item:{price},quantify} ) => (
+            amount += price * quantify
         ))
         return amount;
     }
@@ -40,16 +40,16 @@ const CartItem = () => {
                 <div className= "col-md-7">
                     {
                         // Hago dos destructuring a mi state purchases : 1) Las propiedades que necesito del objeto Item, 2) La cantidad agregada al carrito de ese objeto item
-                        purchases.map(({ item:{id,nombre,precio} , quantify }) => (
+                        purchases.map(({ item:{id , name , price , image} , quantify }) => (
                             <article className="cartItem mb-4" key={id}>
                                 <div>
-                                    {<img src={imgArr[id]} alt={nombre} />}
+                                    {<img src={image} alt={name} />}
                                 </div>
                                 <div>
-                                    <h6>{ nombre }</h6>
+                                    <h6>{ name }</h6>
                                 </div>
                                 <div>
-                                    <span>${ (precio * quantify) }</span>
+                                    <span>${ (price * quantify) }</span>
                                 </div>
                                 <div>
                                     <FontAwesomeIcon icon= { faTimes } title= "Eliminar producto" onClick = {() => deleteItemById(id)}/>
@@ -79,7 +79,7 @@ const CartItem = () => {
     }
 
     return (
-        <section className = "container mt-5">
+        <section className = "container mt-5 animacion">
             {
                 (purchases.length === 0) ? cartEmpty() : printItems()
             }

@@ -26,10 +26,10 @@ const Header = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto navBar">
-              <NavLink to="/producto/notebook">Notebooks</NavLink>
-              <NavLink to="/producto/auriculares">Auriculares</NavLink>
-              <NavLink to="/producto/sillas">Sillas</NavLink>
-              <NavLink to="/producto/discos">Discos</NavLink>
+              <NavLink to="/product/notebook">Notebooks</NavLink>
+              <NavLink to="/product/auriculares">Auriculares</NavLink>
+              <NavLink to="/product/sillas">Sillas</NavLink>
+              <NavLink to="/product/discos">Discos</NavLink>
             </Nav>
           </Navbar.Collapse>
         </Container>

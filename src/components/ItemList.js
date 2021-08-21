@@ -1,27 +1,24 @@
 import React from "react";
 /* Components */
 import Item from "./Item";
-/* ARRAYS DE IMAGENES */
-import { imgArr } from "../img";
 /* Router */
 import { Link } from "react-router-dom";
+const printItem = (id, name, price,image) => {
+  return (
+    <div className="col-md-4 mb-4" key={id}>
+      <Link to={`/detail/${id}`} style={{ textDecoration: "none" }}>
+        <Item id={id} name={name} price={price} image={image} />
+      </Link>
+    </div>
+  );
+};
 
-const ItemList = ({ item, categoriaParam }) => {
-  const printItem = (id, nombre, precio) => {
-    return (
-      <div className="col-md-4 mb-4" key={id}>
-        <Link to={`/detalle/${id}`} style={{ textDecoration: "none" }}>
-          <Item id={id} nombre={nombre} precio={precio} img={imgArr[id]} />
-        </Link>
-      </div>
-    );
-  };
+const ItemList = ({ item }) => {
   return (
     <div className="row">
-      {item.map(({ id, nombre, precio, categoria }) =>
-        (categoriaParam === undefined) ? printItem(id, nombre, precio) : 
-        (categoria === categoriaParam) ? printItem(id, nombre, precio) : ""
-      )}
+      {
+        item.map(({ id, name, price, image}) => printItem(id, name, price, image) )
+      }
     </div>
   );
 };

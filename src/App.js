@@ -5,7 +5,6 @@ import './assets/scss/App.scss';
 /* COMPONENTS */
 import CartItem from './components/CartItems';
 import Header from './components/Header';
-/* import Home from './components/Home'; */
 import ItemDetailContainer from './components/ItemDetailContainer';
 import ItemListContainer from './components/ItemListContainer';
 /* Context */
@@ -24,10 +23,10 @@ const App = () => {
               <Route exact path="/" >
                 <ItemListContainer />
               </Route>
-              <Route path="/producto/:categoria">
+              <Route path="/product/:paramCategory">
                 <ItemListContainer /> 
               </Route>
-              <Route  exact path="/detalle/:id">
+              <Route  exact path="/detail/:id">
                 <ItemDetailContainer />
               </Route>
               <Route path = "/cart">
