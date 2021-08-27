@@ -45,11 +45,19 @@ const ItemListContainer = () => {
   }, [paramCategory]);
   
   return (
-    (loadingPage)
+    (!loadingPage) ? <Loading/> :
+    ( item.length !== 0 )
     ? <section className="container mt-5 animacion">
         <ItemList item={item} />
       </section>
-    : <Loading/>
+    :
+      <section className="container mt-5">
+        <div className="row">
+          <div className="col-md-12">
+            <h6>No existen productos con dicha categoria</h6>
+          </div>
+        </div>
+      </section>   
   );
 };
 export default ItemListContainer;

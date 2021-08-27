@@ -1,4 +1,4 @@
-import React , { useContext } from 'react';
+import React , { useContext} from 'react';
 import CartContext from '../context/CartContext';
 
 /* DEPENDENCIAS */
@@ -7,12 +7,22 @@ import {faTrashAlt , faTimes , faUndo} from '@fortawesome/free-solid-svg-icons';
 
 /* ROUTER */
 import { Link } from 'react-router-dom';
+/* FIRESBASE */
+import { dataBase } from '../fireBaseConfig';
 
-/* Array de imagenes */
-/* import { imgArr } from '../img'; */
 
 const CartItem = () => {
+
+    /* CONTEXTO */
     const { purchases, deleteItemById , clearCart} = useContext( CartContext );
+
+    const items = []; // Aqui se cargaran el objeto con el detalle de la compra en la funcion
+    const client = {
+        name : 'Alejandro',
+        phone : '+54 91121816563',
+        email : 'alejandro20452@gmail.com'
+    }
+
     const totalAmount = () => {
         let amount = 0;
         purchases.map(( {item:{price},quantify} ) => (
@@ -33,22 +43,57 @@ const CartItem = () => {
             </div>
         )
     }
-    const printItems = () => {
+    const getDate = () => {
+        const date = new Date();
+        const mins = date.getMinutes() < 10 ? `0${date.getMinutes()}` : date.getMinutes() ;
+        const hours = date.getHours();
+        const year = date.getFullYear();
+        const day = date.getDate();
+        const month = date.getMonth() + 1 < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
+        const time = hours < 13 ? 'am' : 'pm'
+        const result = `${day}/${month}/${year}, a las ${hours}:${mins} ${time}`;
+
+        return result;
+    }
+    const confirmPurchase = async () => {
+        const date = getDate();
+        purchases.map((element) => items.push( element.item ))
+        const order = {
+            buyer: client,
+            items: items,
+            date: date,
+            total: totalAmount()
+        }
+        await dataBase.collection('order').doc().set(order);
+
+        clearCart();
+    }
+
+    const printItems = ( ) => {
 
         return (
             <div className= "row d-flex justify-content-evenly">
-                <div className= "col-md-7">
+                <div className= "col-md-8">
                     {
                         // Hago dos destructuring a mi state purchases : 1) Las propiedades que necesito del objeto Item, 2) La cantidad agregada al carrito de ese objeto item
                         purchases.map(({ item:{id , name , price , image} , quantify }) => (
                             <article className="cartItem mb-4" key={id}>
                                 <div>
-                                    {<img src={image} alt={name} />}
+                                    <img src={image} alt={name} />
                                 </div>
                                 <div>
                                     <h6>{ name }</h6>
                                 </div>
                                 <div>
+                                    <strong>Precio</strong>
+                                    ${price}
+                                </div>
+                                <div>
+                                    <strong>Cantidad</strong>
+                                    { quantify }
+                                </div>
+                                <div>
+                                    <strong>Sub-total</strong>
                                     <span>${ (price * quantify) }</span>
                                 </div>
                                 <div>
@@ -70,7 +115,9 @@ const CartItem = () => {
                             <FontAwesomeIcon icon = { faTrashAlt } title = "Vaciar carrito" onClick = { clearCart } />
                         </div>
                         <div className="cartItemResume__buttonsContainer--confirmPurchase">
-                            <button>CONFIRMAR</button>
+                            <Link to="/order">
+                                <button onClick= { confirmPurchase }>CONFIRMAR</button>
+                            </Link>
                         </div>
                     </div>
                 </div>

@@ -26,12 +26,21 @@ const ItemDetailContainer = () => {
     getItemById();
   },[id])
   return (
-    (loadingPage)
+    (!loadingPage) 
+    ? <Loading/> :
+    (item.length !== 0)
     ?
       <section className = "container detail mt-5">
         <ItemDetail item = {item}/>
       </section>
-    : <Loading />
+    :
+    <section className="container mt-5">
+      <div className="row">
+        <div className="col-md-12">
+          <h6>No existen productos con dicho ID, intente nuevamente</h6>
+        </div>
+      </div>
+    </section> 
   );
 };
 

@@ -7,6 +7,7 @@ import CartItem from './components/CartItems';
 import Header from './components/Header';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import ItemListContainer from './components/ItemListContainer';
+import PurchaseDetail from './components/PurchaseDetail';
 /* Context */
 import { CartProvider } from './context/CartContext';
 
@@ -31,6 +32,9 @@ const App = () => {
               </Route>
               <Route path = "/cart">
                 <CartItem />
+              </Route>
+              <Route path = "/order">
+                <PurchaseDetail />
               </Route>
             </Switch>
         </BrowserRouter>

@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const ItemCount = ( {stock,quantify,setQuantify,setPurchase} ) => {
+const ItemCount = ( {stock,quantify,setQuantify} ) => {
 
 
     // Aumento
@@ -10,11 +10,7 @@ const ItemCount = ( {stock,quantify,setQuantify,setPurchase} ) => {
     // Decremento
     const subtractQuantify = () => (quantify > 1) ? setQuantify( quantify - 1 ) : "";
 
-    // Registo la compra
-    const onAdd = () => {
-        setPurchase( quantify ); // Aqui guardo la cantidad de items "comprada"
-        setQuantify( 1 ); // Una vez guardada la cantidad de items, los reinicio a 1. 
-    }
+
 
     return (
         <>
@@ -23,7 +19,6 @@ const ItemCount = ( {stock,quantify,setQuantify,setPurchase} ) => {
                 <span>{ quantify }</span>
                 <button onClick= { addQuantify }>+</button>
             </div>
-            <button className="detail__containerPurchase--btnPurchase" onClick= { onAdd }>COMPRAR</button>
         </>
 
     );

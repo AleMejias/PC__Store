@@ -20,10 +20,13 @@ const CartProvider = ({ children }) => {
   const addItemToCart = (item,quantify) => {
     const isInCart = itemsAddedToCart.includes(item.id); // Verifico si en el state "itemsAddedTocart" existe el id del item recibido
     const indexInACart = itemsAddedToCart.indexOf( item.id ); // Busco en "itemsAddedToCart" el id que viene por parametro para conocer su index ya que son equitativos  
-
     //Si ya esta en el carro, entonces "actualiza" el item en la posicion recibida por "indexInACart"
     if (isInCart) {
-      purchases[indexInACart].setQuantifyInCart( quantify );
+      const updateQuantify = ( purchases[indexInACart].quantify === item.stock ) ? quantify :
+                             ( (quantify + purchases[indexInACart].quantify  > item.stock) ) ? item.stock : 
+                             ( quantify + purchases[indexInACart].quantify );
+                                   
+      purchases[indexInACart].setQuantifyInCart( updateQuantify );
     }else{
       // Si no esta en el carro pues agregame el nuevo producto haciendo una nueva instancia
       setPurchases([...purchases ,new CartItem( item,quantify)]);
