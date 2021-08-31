@@ -3,14 +3,9 @@ import React from 'react';
 
 const ItemCount = ( {stock,quantify,setQuantify} ) => {
 
-
-    // Aumento
     const addQuantify = () => (quantify !== stock) ? setQuantify( quantify + 1 ) : "";
 
-    // Decremento
     const subtractQuantify = () => (quantify > 1) ? setQuantify( quantify - 1 ) : "";
-
-
 
     return (
         <>

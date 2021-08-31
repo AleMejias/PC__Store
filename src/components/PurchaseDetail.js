@@ -9,10 +9,13 @@ import {faUndo} from '@fortawesome/free-solid-svg-icons';
 /* Router */
 import { Link } from 'react-router-dom';
 
-
+const deleteItemFromFireBase = async (id) => {
+    await dataBase.collection('order').doc(`${id}`).delete()
+}
 const PurchaseDetail = () => {
     const [ detailPurchase , setDetailPurchase ] = useState();
     const [ loadingPage , setLoadingPage ] = useState(false);
+
     useEffect(() => {
         const getItems = async () => {
             const items = await dataBase.collection('order').get().then(( querySnapShot ) => querySnapShot.docs);
@@ -21,10 +24,7 @@ const PurchaseDetail = () => {
         getItems();
         setLoadingPage(true);
     },[])
-    const deleteOrder = async() => {
-        await dataBase.collection('order').doc(`${detailPurchase.id}`).delete().then(() => {
-        })
-    }
+
     const printDetailPurchase =   ( item ) => {
         const { name , phone , email } = item.buyer;
         const { id , items , date , total } = item;
@@ -37,7 +37,7 @@ const PurchaseDetail = () => {
                             <h4>¡Registramos exitosamente tu pedido!</h4>
                         </div>
                         <div className="purchaseDetail__messageContainer--backToHome">
-                            <Link to="/" onClick={deleteOrder}>
+                            <Link to="/" onClick={()=> deleteItemFromFireBase(detailPurchase.id)}>
                                 Volver al listado de productos
                                 <FontAwesomeIcon className= "mx-1" icon = { faUndo } />
                             </Link>
@@ -109,7 +109,7 @@ const PurchaseDetail = () => {
                 (!loadingPage) ? <Loading /> :
                 ( detailPurchase !== undefined ) ? printDetailPurchase( detailPurchase )
                 :
-                <div className="row">
+                <div className="row body">
                     <div className="col-md-12 purchaseDetail__orderNone">
                         <h6>No se registraron ordenes de compra </h6>
                     </div>
@@ -118,5 +118,5 @@ const PurchaseDetail = () => {
         </section>
     );
 }
-
 export default PurchaseDetail;
+export  {deleteItemFromFireBase};

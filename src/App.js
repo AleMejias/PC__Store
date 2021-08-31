@@ -8,6 +8,7 @@ import Header from './components/Header';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import ItemListContainer from './components/ItemListContainer';
 import PurchaseDetail from './components/PurchaseDetail';
+import Footer from './components/Footer';
 /* Context */
 import { CartProvider } from './context/CartContext';
 
@@ -37,6 +38,7 @@ const App = () => {
                 <PurchaseDetail />
               </Route>
             </Switch>
+            <Footer />
         </BrowserRouter>
       </CartProvider>
     </>

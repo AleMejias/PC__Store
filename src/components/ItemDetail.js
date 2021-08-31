@@ -10,20 +10,18 @@ import ItemCount from './ItemCount';
 import CartContext from '../context/CartContext';
 
 const ItemDetail = ({item}) => {
-     const {description} = item; //Hago destructuring del arreglo que contiene los detalles del producto para luego pintarlos con un bucle
+     const {description} = item; 
      const { name , price , stock , image} = item;
      const priceWithIva = price * 1.21;
-     let stockColor = (stock < 4) ? "#FF8300" : "#00E303"; // color a definir segun le cantidad de stock recibida
-     let stockText = (stock < 4) ? "STOCK BAJO" : "STOCK ALTO"; //Mensaje a definir segun el stock recbido
+     let stockColor = (stock < 4) ? "#FF8300" : "#00E303"; 
+     let stockText = (stock < 4) ? "STOCK BAJO" : "STOCK ALTO"; 
 
-    /* Tendremos 2 estados:  Uno para la cantidad que se desea agregar, y otro para guardar la cantidad que se agrega */
     const [quantify,setQuantify] = useState( 1 );
     const [ purchase, setPurchase ] = useState( null );
 
-    // Registo la compra
     const onAdd = () => {
-      setPurchase( quantify ); // Aqui guardo la cantidad de items "comprada"
-      setQuantify( 1 ); // Una vez guardada la cantidad de items, los reinicio a 1. 
+      setPurchase( quantify ); 
+      setQuantify( 1 ); 
     }
 
     /* CONTEXTO */
@@ -45,7 +43,7 @@ const ItemDetail = ({item}) => {
               <span>${ price }</span>
             </div>
             <div className= "detail__containerPriceWithIva">
-              <span>Precio de lista: </span><small> ${ priceWithIva }</small>
+              <span>Precio de lista: </span><small> ${ priceWithIva.toFixed(2) }</small>
             </div>
             <div className="detail__containerFee mt-2">
               <span>12 cuotas de sin interés de <small>${ (priceWithIva / 12).toFixed(2) }</small> a precio de lista.</span>
@@ -80,7 +78,6 @@ const ItemDetail = ({item}) => {
               </div>
             </div>
             <div className="detail__containerPurchase mt-4">
-              {/* EL ESTADO DE LA COMPRA ( PURCHASE ) COMIENZA EN NULL, Y ESO HACE QUE MUESTRE EL BOTON DE COMPRA PORQUE NO TIENE VALOR, UNA VEZ TENGA VALOR PUES MOSTRARA EL BOTON "TERMINAR COMPRA" Y MANDARA POR PARAMETRO DE LA URL LA CANTIDAD QUE SE COMPRÓ */}
               <div className={ (purchase === null) ? 'show' : 'hide' }>
                 <ItemCount stock={stock} quantify={quantify} setQuantify={setQuantify} />
               </div>
@@ -104,8 +101,6 @@ const ItemDetail = ({item}) => {
             <div className="properties__listContainer">
               <ul>
                 {
-                  // COMO ITEM.DESCRIPCION ES UNDEFINED Y LUEGO DE DOS SEGUNDOS TOMA VALORES, ENTONCES COLOQUE ESTA CONDICIONAL PARA EVITAR
-                  // ERRORES EN EL MAP , ERA MEJOR UTILIZAR UN useEffect ???
                   (description !== undefined) ? 
                   description.map((property,index) => (
                     <li key={index}>{Object.getOwnPropertyNames(property)}:<span>{Object.values(property)}</span></li>

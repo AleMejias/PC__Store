@@ -35,7 +35,7 @@ const ItemDetailContainer = () => {
       </section>
     :
     <section className="container mt-5">
-      <div className="row">
+      <div className="row body">
         <div className="col-md-12">
           <h6>No existen productos con dicho ID, intente nuevamente</h6>
         </div>
