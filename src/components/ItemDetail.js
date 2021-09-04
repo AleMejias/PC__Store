@@ -86,7 +86,7 @@ const ItemDetail = ({item}) => {
                 (purchase === null) 
                 ? <button className="detail__containerPurchase--btnPurchase" onClick= { onAdd }>COMPRAR</button>
                 :  <Link to={`/cart`}>
-                    <button className="detail__containerPurchase--btnPurchase" onClick = { () => addItemToCart( item , purchase) }>TERMINAR COMPRA</button>
+                    <button className="detail__containerPurchase--btnPurchase" onClick = { () => addItemToCart( item , purchase) }>IR AL CARRITO</button>
                    </Link>
               }
               </div>

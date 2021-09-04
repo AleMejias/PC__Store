@@ -72,11 +72,11 @@ const PurchaseDetail = () => {
                         </div>
                         <div className="p-2">
                             {
-                                items.map(({ id , name , price}) => (
+                                items.map(({ image , name , price}) => (
                                     <article key={name} className="purchaseDetail__article mb-1">
                                         <div>
-                                            <p className="m-0">ID</p>
-                                            <span>{id}</span>
+                                            <p className="m-0"></p>
+                                            <img src={image} alt={name}/>
                                         </div>
                                         <div>
                                             <p className="m-0">Producto</p>

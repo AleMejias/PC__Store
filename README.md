@@ -102,7 +102,7 @@ const { purchases, deleteItemById , clearCart} = useContext( CartContext );
 # Funciones
 * cartEmpty()
     * Utilizada para mostrar que el carrito se encuentra vacio SI nuestro state "purchases" no contenga nada
-* printItems()
+* printItems( items )
     * Utilizada para mostrar los productos agregados al carrito, para ello internamente recorre el state "purchases" para pintar las cards de productos agregados
 * totalAmount()
     * Utilizada para calcular y mostrar la sumatoria total de los precios
@@ -131,9 +131,9 @@ ___
 ```
 ---
 # Funciones
-* printDetailPurchase()
+* printDetailPurchase( item )
     * Utilizada para mostrar los datos del cliente ,el/los productos y un enlace para volver al Home. Recibe como parametro el state "detailPurchase" donde se almacenan la orden de compra
-* deleteItemFromFireBase()
+* deleteItemFromFireBase( id )
     * Utilizada para eliminar la orden de compra generada en firebase mediante el "id" que se recibe por parametro
 ---
 ___
@@ -144,17 +144,17 @@ ___
 ```
 ---
 # Funciones
-* handleInputChange()
+* handleInputChange( eventoChange )
     * Utilizada para:
         * 1) Guardar en el state "isValid" valores true/false para definir si los inputs fueron validados correctamente
         * 2) Guardar y asignar en el state "clientData" en su correspondiente campo los valores introducidos por el usuario en los inputs
-* handleSubmit()
+* handleSubmit( eventoSubmit )
     * Utilizada para enviar la orden de compra a firebase y posteriormente limpiar el carrito
 * sendPurchaseToFireBase()
     * Utilizada para enviar la orden de compra a firebase. Dicha función crea una plantilla con los datos almacenados en el state "clientData" y los productos almacenados en el state "purchases" para posteriormente crear una "collection" en firebase denominada "order"
 * getDate()
     * Utilizada para obtener la fecha y hora exacta de la compra para ser enviada como dato adicional
-* validatedInputForm()
+* validatedInputForm( value , inputType )
     * Se utiliza para validar los campos del formulario mediante expresiones regulares, devuelve true en caso de cumplir y false en el caso contrario.Recibe como parametro:
         * 1) Valor introducido en el input
         * 2) "name" o "sobre que" input se esta trabajando
@@ -188,12 +188,12 @@ ___
 ```
 ---
 # Funciones
-* addItemToCart() 
+* addItemToCart( item , quantify ) 
     * Se encarga de agregar elementos al state "purchases", teniendo en cuenta:
         * 1) Si el producto ya existe, permite sumar la cantidad existente sin pasarse del stock disponible, si se pasa, la cantidad se reinicia a 1.
           2) Si el producto existe, lo agrega al carrito junto con la cantidad asignada.
           3) Si la cantidad que se quiere asignar es mayor a la cantidad disponible, automáticamente se le dará el mismo valor de la cantidad disponible
-* deleteItemById()
+* deleteItemById( id )
     * Se encarga de eliminar un producto del carrito de compra teniendo en cuenta el "id" que se reciba por parametro.
 * clearCart()
     * Se encarga de eliminar TODOS los productos agregados al carrito de compras

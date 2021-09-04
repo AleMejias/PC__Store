@@ -554,19 +554,6 @@ PIE DE PAGINA
         flex-direction: row;
         justify-content: center;
         padding: 10px;
-        a{
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          text-decoration: none;
-          width: 50%;
-        }
-        span{
-          color: $text-color;
-          font-size: 0.9rem;
-          font-weight: 500;
-          padding: 5px;
-        }
         input{
           background-color: #0084e0;
           border: 1px solid transparent;
@@ -575,6 +562,27 @@ PIE DE PAGINA
           color: #fff;
         }
       }
+    }
+  }
+  .modalForm__Footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px;
+    a{
+      background-color: #0084e0;
+      border: 1px solid transparent;
+      border-bottom: 2px solid #016ab3;
+      border-radius: 5px;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 8px;
+      text-decoration: none;
+      width: 40%;
     }
   }
 }
@@ -656,11 +664,15 @@ PIE DE PAGINA
         display: flex;
         flex-direction: column;
         align-items: center;
+        padding: 2px;
         p{
           color: $primary-bLack;
           font-size: 1rem;
           font-weight: 600;
           text-align: center;
+        }
+        img{
+          width: 4rem;
         }
         span{
           color:$text-color;

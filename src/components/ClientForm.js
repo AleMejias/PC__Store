@@ -95,11 +95,19 @@ const ClientForm = ({show , onHide, total}) => {
       >
         <Modal.Header closeButton className="modalForm__header">
           <Modal.Title id="contained-modal-title-vcenter" className= "modalForm__header--titleContainer">
-            <h6>Generar orden de compra</h6>
+            <h6>
+                {
+                    ( purchasedCompleted ) ? '¡Felicitaciones, tu compra se generó correctamente!' : 'Generar orden de compra'
+                }
+            </h6>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body className="modalForm__body">
-            <form className="modalForm__body--formContainer" onSubmit={ handleSubmit }>
+            <form className=
+            {
+                ( !purchasedCompleted ) ? 'show modalForm__body--formContainer' : 'hide'
+            } 
+                 onSubmit={ handleSubmit }>
                 <label htmlFor="name">Nombre</label>
                     <input type ="text" name="name" placeholder="Introduce tu nombre" onChange={ handleInputChange }
                     value={clientData.name}
@@ -137,13 +145,6 @@ const ClientForm = ({show , onHide, total}) => {
                     />
                 <div className="mt-1 modalForm__body--btnSubmitContainer">
                     {
-                        (purchasedCompleted) 
-                        ?
-                        <Link to="/order">
-                            <input type="submit" value="Ver orden de compra"/>
-                            <span>¡Felicitaciones, tu compra se generó correctamente!</span>
-                        </Link>
-                        :
                         <input type="submit" value="Finalizar Compra"
                         disabled=
                         {
@@ -155,6 +156,14 @@ const ClientForm = ({show , onHide, total}) => {
                 </div>
             </form>
         </Modal.Body>
+        <div className=
+        {
+            (!purchasedCompleted) ? 'hide' : 'show modalForm__Footer'
+        }>
+            <Link to="/order">
+                Ver orden de compra
+            </Link>
+        </div>
       </Modal>
     );
   }
